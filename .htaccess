@@ -1,0 +1,12 @@
+# Remove the question mark from the request but maintain the query string
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# declare index.php as the main page (where our routes lives in)
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
